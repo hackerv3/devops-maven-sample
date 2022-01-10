@@ -72,9 +72,6 @@ pipeline {
                     variable: 'KUBECONFIG')
                     ]) {
                     sh 'envsubst < deploy/dev-all-in
-                    
-                    
-                    
                     ne/devops-sample.yaml | kubectl apply -f -'
                 }
             }
