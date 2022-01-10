@@ -77,11 +77,6 @@ pipeline {
           }
         }
         stage('push with tag'){
-          when{
-            expression{
-              return params.TAG_NAME =~ /v.*/
-            }
-          }
           steps {
               container ('maven') {
                 input(id: 'release-image-with-tag', message: 'release image with tag?')
@@ -97,11 +92,6 @@ pipeline {
           }
         }
         stage('deploy to production') {
-          when{
-            expression{
-              return params.TAG_NAME =~ /v.*/
-            }
-          }
           steps {
             input(id: 'deploy-to-production', message: 'deploy to production?')
             container ('maven') {
